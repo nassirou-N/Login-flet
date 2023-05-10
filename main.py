@@ -2,23 +2,24 @@ from flet import *
 
 
 def main(page:Page):
+   
     page.vertical_alignment = "center"
     page.horizontal_alignment = "center"    
 
     
     def ganti(e):
         ctx.bgcolor ="blue" if isLogin.value == "Login" else "red"
-        ctx.heigth = 500 if isLogin.value == "Login" else 150
+        ctx.height = 500 if isLogin.value == "Login" else 150
         ctx.width = 300 if isLogin.value == "Login" else 200
         ctx.border_radius = 0 if isLogin.value == "Login" else 100
         
         isLogin.value = "Register" if isLogin.value == "Login" else "Login"
-        isLogin.value = transform.Offset(5,0) if isLogin.value == "Login" else transform.Offset(0,0)
+        isLogin.offset = transform.Offset(5,0) if isLogin.value == "Login" else transform.Offset(0,0)
 
         isRegister_btn.value = "Register" if isLogin.value == "Login" else "Login"
         isRegister_btn.offset =  transform.Offset(0,0) if isLogin.value == "Login" else transform.Offset(5,0)
 
-        txt_box_register.visible = True if isLogin.value == "Login" else False
+        txt_box_register.visible = True if isLogin.value == "Register" else False
         page.update()
 
 
@@ -40,6 +41,8 @@ def main(page:Page):
             # Login button elevator
             ElevatedButton("Login",
                 width = page.window_width,
+                bgcolor = "white",
+                color = "blue",
                 on_click = ganti
                 )
             
